@@ -1,3 +1,4 @@
-# Peșterean Marin
-# CR - 191
-# Crasavcic xD
+Laborator: Tehnologii Web
+Student: Peșterean Marin 
+Grupa: Cr-191
+Username: Șeful

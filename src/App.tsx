@@ -1,52 +1,32 @@
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.css';
-import Layout_content from "./components/Layout_content"
-import {StudenOverview} from "./components/StudenOverview"
+import { HeaderLayout } from './components/HeaderLayout';
+import {ContentLayout} from './components/Content_layout'
+import { Layout } from 'antd';
+import { card$ } from './mst/stores/Cardbox.store';
+import { useLoginStore } from ".";
+import { LoginForm } from './components/LoginForm';
+import { Footer } from 'antd/lib/layout/layout';
 
 
-const homeStudent = [
-  {
-    firstName: "Marin",
-    secondName:"Pesterean",
-    gender:"male",
-    age:21,
-    univerity: "UTM",
-    speciality:"CR",
-  },
-  {
-    firstName: "Marin",
-    secondName:"Pesterean",
-    gender:"male",
-    age:21,
-    univerity: "UTM",
-    speciality:"CR",
-  }
-
-]
 
 
 function App() {
+  const loginS = useLoginStore();
+  
+  useEffect(() => {
+    loginS.setInitialStorageContents()
+  }, [])
 
-    const [cards, setCards] = useState([]);
-    const [student, setStudent] = useState([]);
-    
   return (
     <div className="App">
-        <Layout_content
-         setCards={setCards}
-        cards = {cards}
-        />
-
-        <StudenOverview 
-       
-        students = {homeStudent}
-        
-        />
-
-
-
-
+      <LoginForm/>
+      <Layout className='layout'>
+      <HeaderLayout/>
+      <ContentLayout/>
+      <Footer style={{ textAlign: 'center' }}>Peșterean Marin Andrei, Șeful, CR-191</Footer>
+      </Layout>
     </div>
   );
 }
